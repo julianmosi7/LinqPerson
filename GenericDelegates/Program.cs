@@ -31,8 +31,11 @@ namespace GenericDelegates
 
     public static List<Person> MalesStreetNrLessThan10(Database db)
     {
-            return db.Persons.Where(x => x.gender == "male");
-    }
+            return db.Persons
+                    .Where(x => Int32.Parse(x.Adress.streetnumber) < 10)
+                    .Where(x => x.gender == "Male")
+                    .ToList();
+        }
 
     public static List<string> FirstnamesInChina(Database db)
     {
